@@ -43,6 +43,10 @@ function applyValues() {
     // Configurações de incorporação do Power BI
     const models = window['powerbi-client'].models;
 
+
+    const isMobile = window.innerWidth < 768;
+
+    // Configuração base
     const config = {
         type: 'report',
         tokenType: models.TokenType.Embed,
@@ -52,10 +56,28 @@ function applyValues() {
         permissions: models.Permissions.All,
         settings: {
             filterPaneEnabled: false,
-            navContentPaneEnabled: true,
-            layoutType: models.LayoutType.MobilePortrait
+            navContentPaneEnabled: true
         }
     };
+
+    // Adiciona layoutType se não for dispositivo móvel
+    if (isMobile) {
+        config.settings.layoutType = models.LayoutType.MobilePortrait;
+    }
+
+    // const config = {
+    //     type: 'report',
+    //     tokenType: models.TokenType.Embed,
+    //     accessToken: embedToken,
+    //     embedUrl: embedUrl,
+    //     id: reportId,
+    //     permissions: models.Permissions.All,
+    //     settings: {
+    //         filterPaneEnabled: false,
+    //         navContentPaneEnabled: true,
+    //         layoutType: models.LayoutType.MobilePortrait
+    //     }
+    // };
 
     // Replace the form with the report container
     document.getElementById('formContainer').style.display = 'none';
