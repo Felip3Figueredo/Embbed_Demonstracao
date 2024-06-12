@@ -1,6 +1,6 @@
 /* Basic styles for the container */
 .container {
-    width: 100%; /* Adjust width as needed */
+    width: auto; /* Adjust width as needed */
     margin: 0 auto; /* Center the container horizontally */
     padding: 20px;
     border: 1px solid #ddd;
